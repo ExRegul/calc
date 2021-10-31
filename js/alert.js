@@ -6,10 +6,10 @@ function strToNum(value){
     return Number(value);
 }
 function checkNumber(value){
-    if (value == NaN) {
-        return false;
-    } else {
+    if (value > -Infinity && value < Infinity) {
         return true;
+    }else {
+        return false;
     }
     //return (value == NaN)? false : true;
 }
