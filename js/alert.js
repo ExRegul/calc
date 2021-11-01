@@ -59,6 +59,32 @@ function rem(a, b){
 function pow(a, b){
     return a ** b;
 };
+function Calc(operand = "sum", a = 1, b = 1){
+    const isValidNum = checkNumber(a) && checkNumber(b);
+    const isValidOperand = checkAction(operand);
+    if (!isValidOperand) {
+        return "Unknown operation!"
+    }else if (!isValidNum) {
+        return "error"
+    }else{
+        if (operand=="sum") {
+            return sum(a, b);
+        }else if(operand=="multi") {
+            return multi(a, b);
+        }else if(operand=="subt") {
+            return subt(a, b);
+        }else if(operand=="div") {
+            return div(a, b);
+        }else if(operand=="rem") {
+            return rem(a, b);
+        }else if(operand=="pow") {
+            return pow(a, b);
+        }    
+    }
+}
+
+console.log(Calc("pow", 5, 2));
+/*
 let a = 0, b = 0, result = 0, valueAction = "",flContinue;
 do {
     a = strToNum(prompt('Введите число а',"1"));    
@@ -90,5 +116,5 @@ if (checkNumber(a)) {
     }
      
 }
- 
+ */
 
