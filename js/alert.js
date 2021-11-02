@@ -61,29 +61,28 @@ function pow(a, b){
 };
 function Calc(operand = "sum", a = 1, b = 1){
     const isValidNum = checkNumber(a) && checkNumber(b);
-    const isValidOperand = checkAction(operand);
-    if (!isValidOperand) {
-        return "Unknown operation!"
-    }else if (!isValidNum) {
+    if (!isValidNum) {
         return "error"
     }else{
-        if (operand=="sum") {
-            return sum(a, b);
-        }else if(operand=="multi") {
-            return multi(a, b);
-        }else if(operand=="subt") {
-            return subt(a, b);
-        }else if(operand=="div") {
-            return div(a, b);
-        }else if(operand=="rem") {
-            return rem(a, b);
-        }else if(operand=="pow") {
-            return pow(a, b);
-        }    
+        switch(operand){
+            case "sum": return sum(a, b);
+                break;
+            case "multi": return multi(a, b);
+                break;
+            case "subt": return subt(a, b); 
+                break;
+            case "div": return div(a, b);
+                break;
+            case "rem": return rem(a, b); 
+                break;
+            case "pow": return pow(a, b);
+                break;
+            default: return "Unknown operation!"; break;
+        }   
     }
 }
 
-console.log(Calc("pow", 5, 2));
+console.log(Calc("subt", 5, 1));
 /*
 let a = 0, b = 0, result = 0, valueAction = "",flContinue;
 do {
