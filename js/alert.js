@@ -43,7 +43,7 @@ function subt(a, b){
 };
 function div(a, b){
     if (checkZero(b)) {
-        alert("Делить на 0 нельзя!")
+        return "Делить на 0 нельзя!";
     }else{
         return a / b;
     }
@@ -51,7 +51,7 @@ function div(a, b){
 };
 function rem(a, b){
     if (checkZero(b)) {
-        alert("Делить на 0 нельзя!")
+        return "Делить на 0 нельзя!";
     }else{
         return a % b;
     }
@@ -60,60 +60,23 @@ function pow(a, b){
     return a ** b;
 };
 function Calc(operand = "sum", a = 1, b = 1){
+    let operation = {
+        "sum": sum(a,b),
+        "multi": multi(a,b),
+        "subt": subt(a,b),
+        "div": div(a,b),
+        "rem": rem(a,b),
+        "pow": pow(a,b),
+    }
     const isValidNum = checkNumber(a) && checkNumber(b);
     if (!isValidNum) {
         return "error"
+    }else if (operand in operation) {
+        return operation[operand];
     }else{
-        switch(operand){
-            case "sum": return sum(a, b);
-                break;
-            case "multi": return multi(a, b);
-                break;
-            case "subt": return subt(a, b); 
-                break;
-            case "div": return div(a, b);
-                break;
-            case "rem": return rem(a, b); 
-                break;
-            case "pow": return pow(a, b);
-                break;
-            default: return "Unknown operation!"; break;
-        }   
+        return "Unknown operation!"
     }
+
 }
 
-console.log(Calc("subt", 5, 1));
-/*
-let a = 0, b = 0, result = 0, valueAction = "",flContinue;
-do {
-    a = strToNum(prompt('Введите число а',"1"));    
-} while (showMessageErrNum(a));
-if (checkNumber(a)) {
-    do {
-        b = strToNum(prompt('Введите число b','1'));    
-    } while (showMessageErrNum(b));
-    if (checkNumber(b)) {
-        do {
-            valueAction = prompt('Ведите одно математическое действие: sum, multi, subt, div, rem, pow', 'sum');    
-        } while (showMessageErrAction(valueAction)); 
-        if (checkAction(valueAction)) {
-            if (valueAction=="sum") {
-                result = sum(a, b);
-            }else if(valueAction=="multi") {
-                result = multi(a, b);
-            }else if(valueAction=="subt") {
-                result = subt(a, b);
-            }else if(valueAction=="div") {
-                result = div(a, b);
-            }else if(valueAction=="rem") {
-                result = rem(a, b);
-            }else if(valueAction=="pow") {
-                result = pow(a, b);
-            }
-            alert(`Результат ${result}`)
-        }    
-    }
-     
-}
- */
-
+console.log(Calc("multi", 5, 5));
